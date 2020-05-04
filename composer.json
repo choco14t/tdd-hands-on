@@ -1,0 +1,24 @@
+{
+  "name": "choco14t/tdd-hands-on",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "choco",
+      "email": "chocoh14t@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "TddHandsOn\\": "src/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  }
+}
