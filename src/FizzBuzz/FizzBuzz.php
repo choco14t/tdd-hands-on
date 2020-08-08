@@ -6,18 +6,17 @@ namespace TddHandsOn\FizzBuzz;
 
 class FizzBuzz
 {
-    public static function execute(string $i): string
+    public function convert(int $num): string
     {
-        if ($i % 15 === 0) {
+        if ($num % 15 === 0) {
             return 'FizzBuzz';
         }
-        if ($i % 3 === 0) {
+        if ($num % 3 === 0) {
             return 'Fizz';
         }
-        if ($i % 5 === 0) {
+        if ($num % 5 === 0) {
             return 'Buzz';
         }
-
-        return strval($i);
+        return strval($num);
     }
 }

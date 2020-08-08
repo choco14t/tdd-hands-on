@@ -10,28 +10,81 @@ use TddHandsOn\FizzBuzz\FizzBuzz;
  */
 class FizzBuzzTest extends TestCase
 {
-    /**
-     * @dataProvider dataProviderFizzBuzz
-     */
-    public function testFizzBuzz_1(string $input, string $expected)
-    {
-        $result = FizzBuzz::execute($input);
+    private $fizzBuzz;
 
-        $this->assertEquals($expected, $result);
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->fizzBuzz = new FizzBuzz();
     }
 
-    public function dataProviderFizzBuzz()
+    /**
+     * @test
+     * @dataProvider dataProvider_3の倍数のときは数の代わりにFizzに変換する
+     * @param $expected
+     * @param $num
+     */
+    public function _3の倍数のときは数の代わりにFizzに変換する($expected, $num)
+    {
+        $this->assertEquals($expected, $this->fizzBuzz->convert($num));
+    }
+
+    public function dataProvider_3の倍数のときは数の代わりにFizzに変換する()
     {
         return [
-            ['input' => '1', 'output' => '1'],
-            ['input' => '2', 'output' => '2'],
-            ['input' => '3', 'output' => 'Fizz'],
-            ['input' => '4', 'output' => '4'],
-            ['input' => '5', 'output' => 'Buzz'],
-            ['input' => '6', 'output' => 'Fizz'],
-            ['input' => '9', 'output' => 'Fizz'],
-            ['input' => '10', 'output' => 'Buzz'],
-            ['input' => '15', 'output' => 'FizzBuzz'],
+            '3を渡すと文字列Fizzを返す' => ['Fizz', 3],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider dataProvider_5の倍数のときは数の代わりにBuzzに変換する
+     * @param $expected
+     * @param $num
+     */
+    public function _5の倍数のときは数の代わりにBuzzに変換する($expected, $num)
+    {
+        $this->assertEquals($expected, $this->fizzBuzz->convert($num));
+    }
+
+    public function dataProvider_5の倍数のときは数の代わりにBuzzに変換する()
+    {
+        return [
+            '5を渡すと文字列Buzzを返す' => ['Buzz', 5],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider dataProvider_15の倍数のときは数の代わりにBuzzに変換する
+     * @param $expected
+     * @param $num
+     */
+    public function _15の倍数のときは数の代わりにBuzzに変換する($expected, $num)
+    {
+        $this->assertEquals($expected, $this->fizzBuzz->convert($num));
+    }
+
+    public function dataProvider_15の倍数のときは数の代わりにBuzzに変換する()
+    {
+        return [
+            '15を渡すと文字列FizzBuzzを返す' => ['FizzBuzz', 15],
+        ];
+    }
+
+    /**
+     * @test
+     * @dataProvider dataProvider_その他の数のときはそのまま文字列に変換する
+     */
+    public function その他の数のときはそのまま文字列に変換する($expected, $num)
+    {
+        $this->assertEquals($expected, $this->fizzBuzz->convert($num));
+    }
+
+    public function dataProvider_その他の数のときはそのまま文字列に変換する()
+    {
+        return [
+            '1を渡すと文字列1を返す' => ['1', 1],
         ];
     }
 }
